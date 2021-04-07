@@ -8,14 +8,21 @@
 import UIKit
 
 protocol GameSessionDelegate: AnyObject {
-    func didEndGame(questionsCount: Int,rightAnswersCount : Int,date: Date)
+    func didEndGame(questionsCount: Int, rightAnswersCount: Int, date: Date)
 }
 
 class GameViewController: UIViewController {
-
+    
     @IBOutlet private weak var numberOfQuestionLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private var answerButtons : [UIButton]!
+    private var questions = Questions()
+    private var question : Question?
+    private var countQuestions: Int?
+    private var rightAnswersCount = 0
+    private var answers = [String]()
+    weak var delegate : GameSessionDelegate?
+    
     @IBAction private func answerSelect(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
         guard let buttonText = button.titleLabel?.text else {return}
@@ -35,30 +42,23 @@ class GameViewController: UIViewController {
                 questionsCount: countQuestions ?? 0,
                 rightAnswersCount: rightAnswersCount,
                 date: Date())
-            let record = GameSession(questionsCount: countQuestions ?? 0, rightAnswersCount: rightAnswersCount,date: Date())
-            Game.shared.addRecord(record)
+            Game.shared.recordSession()
             self.dismiss(animated: true)
-            
         }
     }
-    private var questions = Questions()
-    private var question : Question?
-    private var countQuestions: Int?
-    private var rightAnswersCount = 0
-    private var answers = [String]()
-    weak var delegate : GameSessionDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         countQuestions = questions.questions.count
         setupQuestions()
+        Game.shared.currentGame = GameSession()
     }
     
-
     private func setupQuestions(){
         question = questions.questions.removeFirst()
         guard let question = question else {return}
         questionLabel.text = question.question
-        numberOfQuestionLabel.text = String(question.id+1)
+        numberOfQuestionLabel.text = "Вопрос №" + String(question.id+1)
         let answers = Array(question.answers)
         answerButtons[0].setTitle(answers[0].key, for: .normal)
         answerButtons[1].setTitle(answers[1].key, for: .normal)

@@ -7,28 +7,24 @@
 
 import Foundation
 
-final class Game{
+final class Game {
 
     static let shared = Game()
-    private let recordsProvider = GameCaretaker()
+    var currentGame: GameSession?
+    private(set) var games : [GameSession] = []
+    private let recorder = GameCaretaker()
     
-    private(set) var records: [GameSession] {
-        didSet {
-            recordsProvider.save(records: self.records)
+    private init() {}
+    
+    func recordSession() {
+        guard let game = currentGame else {
+            return
         }
-    }
-    
-
-    
-    private init() {
-        self.records = self.recordsProvider.retrieveRecords()
-    }
-    
-    func addRecord(_ record: GameSession) {
-        self.records.append(record)
-    }
-    
-    func clearRecords() {
-        self.records = []
+        games.append(game)
+        do {
+            try recorder.saveGame(game)
+        } catch {
+            print("Error record")
+        }
     }
 }

@@ -17,12 +17,12 @@ class RecordsViewController: UIViewController {
 
 extension RecordsViewController:UITableViewDataSource{
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Game.shared.records.count
+    return Game.shared.games.count
     }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell", for: indexPath) as? ResultsCell else { preconditionFailure("ResultsCell Error!") }
-            let record = Game.shared.records[indexPath.row]
+            let record = Game.shared.games[indexPath.row]
             let numberOfQuestions = Double(record.questionsCount)
             let rightAnswers = Double(record.rightAnswersCount)
             let dateFormatter = DateFormatter()

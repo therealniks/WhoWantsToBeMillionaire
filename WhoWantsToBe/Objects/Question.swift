@@ -105,14 +105,7 @@ struct Questions: Codable{
                 "Люксембург" : false,
                 "Лихтенштейн" : false
             ])
-    
     ]
-    
-    func getQuestions() -> [Question]{
-        questions
-    }
-    
-    
 }
 
 
