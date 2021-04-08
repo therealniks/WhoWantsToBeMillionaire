@@ -31,18 +31,21 @@ class GameViewController: UIViewController {
             if !questions.questions.isEmpty{
                 setupQuestions()
             }else{
-                delegate?.didEndGame(
-                    questionsCount: countQuestions ?? 0,
-                    rightAnswersCount: rightAnswersCount,
-                    date: Date())
+//                delegate?.didEndGame(
+//                    questionsCount: countQuestions ?? 0,
+//                    rightAnswersCount: rightAnswersCount,
+//                    date: Date())
+                let result = Result.init(questionsCount: countQuestions!, rightAnswersCount: rightAnswersCount, date: Date())
+                Game.shared.addResult(result)
                 self.dismiss(animated: true)
             }
         }else{
-            delegate?.didEndGame(
-                questionsCount: countQuestions ?? 0,
-                rightAnswersCount: rightAnswersCount,
-                date: Date())
-            Game.shared.recordSession()
+//            delegate?.didEndGame(
+//                questionsCount: countQuestions ?? 0,
+//                rightAnswersCount: rightAnswersCount,
+//                date: Date())
+            let result = Result.init(questionsCount: countQuestions!, rightAnswersCount: rightAnswersCount, date: Date())
+            Game.shared.addResult(result)
             self.dismiss(animated: true)
         }
     }
@@ -51,8 +54,16 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         countQuestions = questions.questions.count
         setupQuestions()
-        Game.shared.currentGame = GameSession()
+        startGame()
     }
+    
+    func startGame(){
+        let gameSession = GameSession()
+        self.delegate = gameSession
+        Game.shared.currentGame = gameSession
+    }
+    
+    
     
     private func setupQuestions(){
         question = questions.questions.removeFirst()

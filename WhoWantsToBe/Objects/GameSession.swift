@@ -7,11 +7,20 @@
 
 import Foundation
 
-class GameSession: Codable {
+
+struct Result: Codable {
+    var questionsCount: Int
+    var rightAnswersCount: Int
+    var date: Date
+}
+
+
+
+
+class GameSession {
     var questionsCount: Int
     var rightAnswersCount : Int
     var date: Date
-    
     var rang: Rang {
         let rightAnswersPercent = Double(rightAnswersCount)/Double(questionsCount)
         switch rightAnswersPercent {
