@@ -9,8 +9,6 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    
-
     @IBOutlet private weak var startGameButton: UIButton!
     @IBOutlet private weak var showResultsButton: UIButton!
 

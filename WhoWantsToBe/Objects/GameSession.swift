@@ -14,8 +14,13 @@ struct Result: Codable {
     var date: Date
 }
 
-
-
+enum Rang {
+    case monkey
+    case child
+    case human
+    case god
+    case unknown
+}
 
 class GameSession {
     var questionsCount: Int
@@ -48,21 +53,12 @@ class GameSession {
 }
 
 extension GameSession : GameSessionDelegate{
+
     func didEndGame(questionsCount: Int, rightAnswersCount: Int, date: Date) {
         self.questionsCount = questionsCount
         self.rightAnswersCount = rightAnswersCount
         self.date = date
+        let result = Result.init(questionsCount: questionsCount, rightAnswersCount: rightAnswersCount, date: Date())
+        Game.shared.addResult(result)
     }
 }
-
-
-enum Rang {
-    case monkey
-    case child
-    case human
-    case god
-    case unknown
-}
-
-
-

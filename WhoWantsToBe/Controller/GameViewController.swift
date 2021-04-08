@@ -28,24 +28,20 @@ class GameViewController: UIViewController {
         guard let buttonText = button.titleLabel?.text else {return}
         if answers.contains(buttonText){
             rightAnswersCount+=1
-            if !questions.questions.isEmpty{
+            if !questions.questions.isEmpty {
                 setupQuestions()
-            }else{
-//                delegate?.didEndGame(
-//                    questionsCount: countQuestions ?? 0,
-//                    rightAnswersCount: rightAnswersCount,
-//                    date: Date())
-                let result = Result.init(questionsCount: countQuestions!, rightAnswersCount: rightAnswersCount, date: Date())
-                Game.shared.addResult(result)
+            }else {
+                delegate?.didEndGame(
+                    questionsCount: countQuestions ?? 0,
+                    rightAnswersCount: rightAnswersCount,
+                    date: Date())
                 self.dismiss(animated: true)
             }
-        }else{
-//            delegate?.didEndGame(
-//                questionsCount: countQuestions ?? 0,
-//                rightAnswersCount: rightAnswersCount,
-//                date: Date())
-            let result = Result.init(questionsCount: countQuestions!, rightAnswersCount: rightAnswersCount, date: Date())
-            Game.shared.addResult(result)
+        }else {
+            delegate?.didEndGame(
+                questionsCount: countQuestions ?? 0,
+                rightAnswersCount: rightAnswersCount,
+                date: Date())
             self.dismiss(animated: true)
         }
     }
@@ -63,9 +59,7 @@ class GameViewController: UIViewController {
         Game.shared.currentGame = gameSession
     }
     
-    
-    
-    private func setupQuestions(){
+    private func setupQuestions() {
         question = questions.questions.removeFirst()
         guard let question = question else {return}
         questionLabel.text = question.question
@@ -75,7 +69,7 @@ class GameViewController: UIViewController {
         answerButtons[1].setTitle(answers[1].key, for: .normal)
         answerButtons[2].setTitle(answers[2].key, for: .normal)
         answerButtons[3].setTitle(answers[3].key, for: .normal)
-        
+       
         self.answers = answers
             .filter{$0.value==true}
             .map{$0.key}
