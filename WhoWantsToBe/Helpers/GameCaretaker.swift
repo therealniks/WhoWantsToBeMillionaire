@@ -7,10 +7,14 @@
 
 import Foundation
 
+
+enum Keys: String {
+    case record = "record"
+    case question = "question"
+}
+
 class GameCaretaker {
-    
-    private let key = "game"
-    
+    let key = Keys.record.rawValue
     func save(_ records: [Result]) {
         do {
             let memento = try JSONEncoder().encode(records)
@@ -26,4 +30,11 @@ class GameCaretaker {
         }
         return (try? JSONDecoder().decode([Result].self, from: memento)) ?? []
     }
+
+
 }
+
+    
+
+    
+

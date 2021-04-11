@@ -12,14 +12,15 @@ struct Result: Codable {
     var questionsCount: Int
     var rightAnswersCount: Int
     var date: Date
+    var rang: String
 }
 
-enum Rang {
-    case monkey
-    case child
-    case human
-    case god
-    case unknown
+enum Rang: String {
+    case monkey = "Monkey"
+    case child = "Child"
+    case human = "ChomoSapiens"
+    case god = "God"
+    case unknown = "Who Are U?"
 }
 
 class GameSession {
@@ -58,7 +59,10 @@ extension GameSession : GameSessionDelegate{
         self.questionsCount = questionsCount
         self.rightAnswersCount = rightAnswersCount
         self.date = date
-        let result = Result.init(questionsCount: questionsCount, rightAnswersCount: rightAnswersCount, date: Date())
+        let result = Result.init(questionsCount: questionsCount,
+                                 rightAnswersCount: rightAnswersCount,
+                                 date: Date(),
+                                 rang: self.rang.rawValue)
         Game.shared.addResult(result)
     }
 }

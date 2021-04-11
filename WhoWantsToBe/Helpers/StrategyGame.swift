@@ -2,24 +2,28 @@
 //  StrategyGame.swift
 //  WhoWantsToBe
 //
-//  Created by N!kS on 04.04.2021.
+//  Created by N!kS on 08.04.2021.
 //
 
 import Foundation
 
-protocol StrategyGame {
+protocol StrategyGameProtocol {
     func getQuestions() -> [Question]
 }
 
-
-class StrategyGames: StrategyGame {
+class StrategyGame: StrategyGameProtocol {
     private let questions: [Question]
     
-    init(_ questions: [Question]) {
+    init(_ questions: [Question]){
         self.questions = questions
     }
     
     func getQuestions() -> [Question] {
-        return questions.shuffled()
+        questions
     }
+    func getQuestionsShuffled() -> [Question] {
+        questions.shuffled()
+    }
+    
+    
 }

@@ -16,19 +16,21 @@ class GameViewController: UIViewController {
     @IBOutlet private weak var numberOfQuestionLabel: UILabel!
     @IBOutlet private weak var questionLabel: UILabel!
     @IBOutlet private var answerButtons : [UIButton]!
-    private var questions = Questions()
-    private var question : Question?
+    private var questions = [Question]()
+    private var question: Question?
     private var countQuestions: Int?
     private var rightAnswersCount = 0
     private var answers = [String]()
     weak var delegate : GameSessionDelegate?
+    private var strategyGame : StrategyGame!
+    let gameCaretaker = QuestionCaretaker()
     
     @IBAction private func answerSelect(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
         guard let buttonText = button.titleLabel?.text else {return}
         if answers.contains(buttonText){
             rightAnswersCount+=1
-            if !questions.questions.isEmpty {
+            if !questions.isEmpty {
                 setupQuestions()
             }else {
                 delegate?.didEndGame(
@@ -48,7 +50,10 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        countQuestions = questions.questions.count
+        questions = gameCaretaker.loadQuestions().getQuestions()
+        strategyGame = StrategyGame(questions)
+        questions = !Game.shared.sequencyQuestions ? strategyGame.getQuestions() : strategyGame.getQuestionsShuffled()
+        countQuestions = questions.count
         setupQuestions()
         startGame()
     }
@@ -57,10 +62,11 @@ class GameViewController: UIViewController {
         let gameSession = GameSession()
         self.delegate = gameSession
         Game.shared.currentGame = gameSession
+        
     }
     
     private func setupQuestions() {
-        question = questions.questions.removeFirst()
+        question = questions.removeFirst()
         guard let question = question else {return}
         questionLabel.text = question.question
         numberOfQuestionLabel.text = "Вопрос №" + String(question.id+1)

@@ -13,6 +13,7 @@ final class Game {
     var currentGame: GameSession?
     private(set) var results : [Result] = []
     private let recorder = GameCaretaker()
+    var sequencyQuestions = false
     
     func addResult(_ result: Result) {
         self.results.append(result)

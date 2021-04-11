@@ -12,8 +12,9 @@ struct Question: Codable {
     var question : String
     var answers : [String:Bool]
 }
-
-struct Questions: Codable{
+ 
+struct Questions: Codable {
+    var userQuestions = [Question]()
     var questions : [Question] = [
         Question.init(
             id: 0,
@@ -106,6 +107,10 @@ struct Questions: Codable{
                 "Лихтенштейн" : false
             ])
     ]
+    
+    func getQuestions() -> [Question]{
+        return questions + userQuestions
+    }
 }
 
 
