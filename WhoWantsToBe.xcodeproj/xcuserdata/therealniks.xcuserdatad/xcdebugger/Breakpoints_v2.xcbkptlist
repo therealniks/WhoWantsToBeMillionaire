@@ -8,15 +8,79 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "8A1CB9E0-6124-4250-93B8-B69A9E103ADA"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WhoWantsToBe/Objects/GameSession.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "didEndGame(questionsCount:rightAnswersCount:date:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CBBD2BC9-34F9-43B7-A2B8-D3B4679F5CC9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WhoWantsToBe/Controller/GameViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8F2B208-DAE7-4208-9F8D-BB322407F5F5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WhoWantsToBe/Objects/Question.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "getQuestions()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6916CC9A-E06F-480D-9A00-684318C3B5E6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WhoWantsToBe/Controller/GameViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4D2851E0-EECE-41EA-BA22-58C3FE1D9D11"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WhoWantsToBe/Controller/GameViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -19,6 +19,8 @@
 		80B18EA4261B41640074F43B /* GameCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B18EA3261B41640074F43B /* GameCaretaker.swift */; };
 		80B18EAE261B52180074F43B /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B18EAD261B52180074F43B /* ResultsCell.swift */; };
 		80B18EB7261B5C860074F43B /* RecordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B18EB6261B5C860074F43B /* RecordsViewController.swift */; };
+		80B8974826223A6E00865A48 /* QuestionCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B8974726223A6E00865A48 /* QuestionCaretaker.swift */; };
+		80D83EFF261FA156000D36D5 /* StrategyGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D83EFE261FA156000D36D5 /* StrategyGame.swift */; };
 		80DEE8452618BA9100CE4BBE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEE8442618BA9100CE4BBE /* MainViewController.swift */; };
 		80DEE8482618BD3000CE4BBE /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEE8472618BD3000CE4BBE /* GameViewController.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		80B18EA3261B41640074F43B /* GameCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCaretaker.swift; sourceTree = "<group>"; };
 		80B18EAD261B52180074F43B /* ResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
 		80B18EB6261B5C860074F43B /* RecordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewController.swift; sourceTree = "<group>"; };
+		80B8974726223A6E00865A48 /* QuestionCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCaretaker.swift; sourceTree = "<group>"; };
+		80D83EFE261FA156000D36D5 /* StrategyGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyGame.swift; sourceTree = "<group>"; };
 		80DEE8442618BA9100CE4BBE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		80DEE8472618BD3000CE4BBE /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				80B18EA3261B41640074F43B /* GameCaretaker.swift */,
+				80D83EFE261FA156000D36D5 /* StrategyGame.swift */,
+				80B8974726223A6E00865A48 /* QuestionCaretaker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -194,7 +200,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B18EB7261B5C860074F43B /* RecordsViewController.swift in Sources */,
+				80B8974826223A6E00865A48 /* QuestionCaretaker.swift in Sources */,
 				80A901FC2618A20E00725B65 /* ViewController.swift in Sources */,
+				80D83EFF261FA156000D36D5 /* StrategyGame.swift in Sources */,
 				80A9020F2618AD1B00725B65 /* Question.swift in Sources */,
 				80A901F82618A20E00725B65 /* AppDelegate.swift in Sources */,
 				80A901FA2618A20E00725B65 /* SceneDelegate.swift in Sources */,
