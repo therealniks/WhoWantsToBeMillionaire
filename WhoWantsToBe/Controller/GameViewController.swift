@@ -18,8 +18,8 @@ class GameViewController: UIViewController {
     @IBOutlet private var answerButtons : [UIButton]!
     private var questions = [Question]()
     private var question: Question?
-    private var countQuestions: Int?
-    private var rightAnswersCount = 0
+    private var countQuestions = 0
+    private var rightAnswersCount = Observable<Int>(0)
     private var answers = [String]()
     weak var delegate : GameSessionDelegate?
     private var strategyGame : StrategyGame!
@@ -29,20 +29,20 @@ class GameViewController: UIViewController {
         guard let button = sender as? UIButton else { return }
         guard let buttonText = button.titleLabel?.text else {return}
         if answers.contains(buttonText){
-            rightAnswersCount+=1
+            rightAnswersCount.value+=1
             if !questions.isEmpty {
                 setupQuestions()
             }else {
                 delegate?.didEndGame(
-                    questionsCount: countQuestions ?? 0,
-                    rightAnswersCount: rightAnswersCount,
+                    questionsCount: countQuestions,
+                    rightAnswersCount: rightAnswersCount.value,
                     date: Date())
                 self.dismiss(animated: true)
             }
         }else {
             delegate?.didEndGame(
-                questionsCount: countQuestions ?? 0,
-                rightAnswersCount: rightAnswersCount,
+                questionsCount: countQuestions,
+                rightAnswersCount: rightAnswersCount.value,
                 date: Date())
             self.dismiss(animated: true)
         }
@@ -54,6 +54,11 @@ class GameViewController: UIViewController {
         strategyGame = StrategyGame(questions)
         questions = !Game.shared.sequencyQuestions ? strategyGame.getQuestions() : strategyGame.getQuestionsShuffled()
         countQuestions = questions.count
+        rightAnswersCount.addObserver(self, options: [.new, .initial]) {
+            [weak self] (rightAnswersCount, _) in
+            guard let self = self else { return }
+            self.numberOfQuestionLabel.text = "Вопрос №\(Int(rightAnswersCount) + 1 ) из \(self.countQuestions)"
+        }
         setupQuestions()
         startGame()
     }
@@ -69,7 +74,6 @@ class GameViewController: UIViewController {
         question = questions.removeFirst()
         guard let question = question else {return}
         questionLabel.text = question.question
-        numberOfQuestionLabel.text = "Вопрос №" + String(question.id+1)
         let answers = Array(question.answers)
         answerButtons[0].setTitle(answers[0].key, for: .normal)
         answerButtons[1].setTitle(answers[1].key, for: .normal)
@@ -80,5 +84,4 @@ class GameViewController: UIViewController {
             .filter{$0.value==true}
             .map{$0.key}
     }
-
 }

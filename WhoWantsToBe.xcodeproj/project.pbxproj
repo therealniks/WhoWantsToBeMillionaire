@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		806AC60F2624701E004B710A /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806AC60E2624701E004B710A /* Observer.swift */; };
 		80A901F82618A20E00725B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A901F72618A20E00725B65 /* AppDelegate.swift */; };
 		80A901FA2618A20E00725B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A901F92618A20E00725B65 /* SceneDelegate.swift */; };
 		80A901FC2618A20E00725B65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A901FB2618A20E00725B65 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		806AC60E2624701E004B710A /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		80A901F42618A20E00725B65 /* WhoWantsToBe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWantsToBe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A901F72618A20E00725B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80A901F92618A20E00725B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				80B18EA3261B41640074F43B /* GameCaretaker.swift */,
 				80D83EFE261FA156000D36D5 /* StrategyGame.swift */,
 				80B8974726223A6E00865A48 /* QuestionCaretaker.swift */,
+				806AC60E2624701E004B710A /* Observer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				80A901FC2618A20E00725B65 /* ViewController.swift in Sources */,
 				80D83EFF261FA156000D36D5 /* StrategyGame.swift in Sources */,
 				80A9020F2618AD1B00725B65 /* Question.swift in Sources */,
+				806AC60F2624701E004B710A /* Observer.swift in Sources */,
 				80A901F82618A20E00725B65 /* AppDelegate.swift in Sources */,
 				80A901FA2618A20E00725B65 /* SceneDelegate.swift in Sources */,
 				80DEE8482618BD3000CE4BBE /* GameViewController.swift in Sources */,
