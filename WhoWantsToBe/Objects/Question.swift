@@ -8,16 +8,13 @@
 import Foundation
 
 struct Question: Codable {
-    var id : Int
     var question : String
     var answers : [String:Bool]
 }
- 
-struct Questions: Codable {
-    var userQuestions = [Question]()
-    var questions : [Question] = [
+
+extension Array where Element == Question {
+    static var defaultQuestion: [Question] = [
         Question.init(
-            id: 0,
             question: "Сколько раз в сутки подзаводят куранты Спасской башни Кремля?",
             answers: [
                 "Один" : false,
@@ -26,7 +23,6 @@ struct Questions: Codable {
                 "Четыре" : false
             ]),
         Question.init(
-            id: 1,
             question: "Кто 1-м получил Нобелевскую премию по литературе?",
             answers: [
                 "Романист" : false,
@@ -35,7 +31,6 @@ struct Questions: Codable {
                 "Эссеист" : false
             ]),
         Question.init(
-            id: 2,
             question: "С какой буквы начинаются слова, опубликованные в 16-м томе последнего издания Большой советской энциклопедии?",
             answers: [
                 "М" : true,
@@ -44,7 +39,6 @@ struct Questions: Codable {
                 "П" : false
             ]),
         Question.init(
-            id: 3,
             question: "Какой химический элемент назван в честь злого подземного гнома?",
             answers: [
                 "Гафний" : false,
@@ -53,7 +47,6 @@ struct Questions: Codable {
                 "Теллур" : false
             ]),
         Question.init(
-            id: 4,
             question: "В какой из этих столиц бывших союзных республик раньше появилось метро?",
             answers: [
                 "Тбилиси" : true,
@@ -62,7 +55,6 @@ struct Questions: Codable {
                 "Минск" : false
             ]),
         Question.init(
-            id: 5,
             question: "Сколько морей омывают Балканский полуостров?",
             answers: [
                 "3" : false,
@@ -71,7 +63,6 @@ struct Questions: Codable {
                 "6" : true
             ]),
         Question.init(
-            id: 6,
             question: "Реки с каким названием нет на территории России?",
             answers: [
                 "Шея" : false,
@@ -80,7 +71,6 @@ struct Questions: Codable {
                 "Палец" : false
             ]),
         Question.init(
-            id: 7,
             question: "Что запрещал указ, который в 1726 году подписала Екатерина I?",
             answers: [
                 "Точить лясы" : false,
@@ -89,7 +79,6 @@ struct Questions: Codable {
                 "Переливать из пустого в порожнее" : false
             ]),
         Question.init(
-            id: 8,
             question: "Какое государство ежегодно дарит Лондону ёлку для Трафальгарской площади?",
             answers: [
                 "Дания" : false,
@@ -98,7 +87,6 @@ struct Questions: Codable {
                 "Эстония" : false
             ]),
         Question.init(
-            id: 9,
             question: "Как называется единственное в Европе герцогство?",
             answers: [
                 "Монако" : false,
@@ -107,10 +95,4 @@ struct Questions: Codable {
                 "Лихтенштейн" : false
             ])
     ]
-    
-    func getQuestions() -> [Question]{
-        return questions + userQuestions
-    }
 }
-
-

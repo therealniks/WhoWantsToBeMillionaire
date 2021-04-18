@@ -8,22 +8,16 @@
 import Foundation
 
 protocol StrategyGameProtocol {
-    func getQuestions() -> [Question]
+    func getQuestions(questions: [Question]) -> [Question]
 }
 
-class StrategyGame: StrategyGameProtocol {
-    private let questions: [Question]
-    
-    init(_ questions: [Question]){
-        self.questions = questions
-    }
-    
-    func getQuestions() -> [Question] {
+class StrategyGameConsistent: StrategyGameProtocol {
+    func getQuestions(questions: [Question]) -> [Question] {
         questions
     }
-    func getQuestionsShuffled() -> [Question] {
+}
+class StrategyGameShuffled: StrategyGameProtocol{
+    func getQuestions(questions: [Question]) -> [Question] {
         questions.shuffled()
     }
-    
-    
 }

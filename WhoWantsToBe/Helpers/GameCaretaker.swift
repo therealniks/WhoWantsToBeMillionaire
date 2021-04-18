@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum Keys: String {
     case record = "record"
     case question = "question"
@@ -30,8 +29,6 @@ class GameCaretaker {
         }
         return (try? JSONDecoder().decode([Result].self, from: memento)) ?? []
     }
-
-
 }
 
     

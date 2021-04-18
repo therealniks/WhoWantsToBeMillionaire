@@ -14,13 +14,23 @@ final class Game {
     private(set) var results : [Result] = []
     private let recorder = GameCaretaker()
     var sequencyQuestions = false
+    var userQuestions: [Question] = []
     
     func addResult(_ result: Result) {
         self.results.append(result)
         recorder.save(results)
     }
-    
+    func getQuestions() -> [Question]{
+        let questionCaretaker = QuestionCaretaker()
+        userQuestions = questionCaretaker.loadQuestions()
+        return userQuestions + Array.defaultQuestion
+    }
+
     private init() {
         self.results = recorder.load()
     }
 }
+
+
+
+

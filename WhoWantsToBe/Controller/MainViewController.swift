@@ -70,15 +70,14 @@ class MainViewController: UIViewController {
         
         let add = UIAlertAction(title: "Добавить",
                                 style: .default) { _ in
-            let question = Question(id: 0,
-                                    question: alert.textFields?[0].text ?? "",
+            let question = Question(question: alert.textFields?[0].text ?? "",
                                     answers: [
                                         "\(alert.textFields?[1].text ?? "")" : true,
                                         "\(alert.textFields?[2].text ?? "")" : false,
                                         "\(alert.textFields?[3].text ?? "")" : false,
                                         "\(alert.textFields?[4].text ?? "")" : false
                                     ])
-            try? self.questionCaretaker.saveQuestions(question)
+            try? self.questionCaretaker.saveQuestion(question)
         }
         add.isEnabled = false
         let cancel = UIAlertAction(title: "Отмена",
@@ -88,7 +87,6 @@ class MainViewController: UIViewController {
         checkQuestionFields(alert: alert, add: add)
         self.present(alert, animated: true)
     }
-    
     
     private func checkQuestionFields(alert: UIAlertController, add: UIAlertAction) {
         for i in 0...4 {

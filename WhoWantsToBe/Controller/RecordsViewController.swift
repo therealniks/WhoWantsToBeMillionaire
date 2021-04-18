@@ -24,7 +24,7 @@ extension RecordsViewController:UITableViewDataSource{
         let record = Game.shared.results[indexPath.row]
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
-        cell.dateLabel.text = "Дата:\n"+dateFormatter.string(from: record.date)
+        cell.dateLabel.text = "Дата:\n" + record.getDate()
         cell.percentLabel.text = "Ранг:\n" + record.rang   
         cell.recordLabel.text =  "Верных ответов:\n\(record.rightAnswersCount)"
         return cell

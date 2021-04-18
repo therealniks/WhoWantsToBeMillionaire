@@ -22,12 +22,11 @@ class GameViewController: UIViewController {
     private var rightAnswersCount = Observable<Int>(0)
     private var answers = [String]()
     weak var delegate : GameSessionDelegate?
-    private var strategyGame : StrategyGame!
-    let gameCaretaker = QuestionCaretaker()
+    private var strategyGame : StrategyGameProtocol!
     
-    @IBAction private func answerSelect(_ sender: Any) {
-        guard let button = sender as? UIButton else { return }
-        guard let buttonText = button.titleLabel?.text else {return}
+    
+    @IBAction private func answerSelect(_ sender: UIButton) {
+        guard let buttonText = sender.titleLabel?.text else {return}
         if answers.contains(buttonText){
             rightAnswersCount.value+=1
             if !questions.isEmpty {
@@ -50,17 +49,12 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        questions = gameCaretaker.loadQuestions().getQuestions()
-        strategyGame = StrategyGame(questions)
-        questions = !Game.shared.sequencyQuestions ? strategyGame.getQuestions() : strategyGame.getQuestionsShuffled()
+        questions = Game.shared.getQuestions()
         countQuestions = questions.count
-        rightAnswersCount.addObserver(self, options: [.new, .initial]) {
-            [weak self] (rightAnswersCount, _) in
-            guard let self = self else { return }
-            self.numberOfQuestionLabel.text = "Вопрос №\(Int(rightAnswersCount) + 1 ) из \(self.countQuestions)"
-        }
+        checkStrategy()
         setupQuestions()
         startGame()
+        updateRightAnswers()
     }
     
     func startGame(){
@@ -83,5 +77,23 @@ class GameViewController: UIViewController {
         self.answers = answers
             .filter{$0.value==true}
             .map{$0.key}
+    }
+    
+    private func checkStrategy() {
+        let sequencyQuestions = Game.shared.sequencyQuestions
+        if !sequencyQuestions {
+            strategyGame = StrategyGameConsistent() as StrategyGameProtocol
+            questions = strategyGame.getQuestions(questions: questions)
+        } else {
+            strategyGame = StrategyGameShuffled() as StrategyGameProtocol
+            questions = strategyGame.getQuestions(questions: questions)
+        }
+    }
+    private func updateRightAnswers() {
+        rightAnswersCount.addObserver(self, options: [.new, .initial]) {
+            [weak self] (rightAnswersCount, _) in
+            guard let self = self else { return }
+            self.numberOfQuestionLabel.text = "Вопрос №\(Int(rightAnswersCount) + 1 ) из \(self.countQuestions)"
+        }
     }
 }

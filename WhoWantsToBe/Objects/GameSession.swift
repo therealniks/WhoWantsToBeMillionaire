@@ -5,7 +5,7 @@
 //  Created by N!kS on 05.04.2021.
 //
 
-import Foundation
+import UIKit
 
 
 struct Result: Codable {
@@ -13,6 +13,12 @@ struct Result: Codable {
     var rightAnswersCount: Int
     var date: Date
     var rang: String
+    
+    func getDate()-> String {
+    let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        return dateFormatter.string(from: date)
+    }
 }
 
 enum Rang: String {
