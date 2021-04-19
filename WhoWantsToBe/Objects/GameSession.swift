@@ -5,17 +5,29 @@
 //  Created by N!kS on 05.04.2021.
 //
 
-import Foundation
+import UIKit
 
 
 struct Result: Codable {
     var questionsCount: Int
     var rightAnswersCount: Int
     var date: Date
+    var rang: String
+    
+    func getDate()-> String {
+    let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        return dateFormatter.string(from: date)
+    }
 }
 
-
-
+enum Rang: String {
+    case monkey = "Monkey"
+    case child = "Child"
+    case human = "ChomoSapiens"
+    case god = "God"
+    case unknown = "Who Are U?"
+}
 
 class GameSession {
     var questionsCount: Int
@@ -48,21 +60,15 @@ class GameSession {
 }
 
 extension GameSession : GameSessionDelegate{
+
     func didEndGame(questionsCount: Int, rightAnswersCount: Int, date: Date) {
         self.questionsCount = questionsCount
         self.rightAnswersCount = rightAnswersCount
         self.date = date
+        let result = Result.init(questionsCount: questionsCount,
+                                 rightAnswersCount: rightAnswersCount,
+                                 date: Date(),
+                                 rang: self.rang.rawValue)
+        Game.shared.addResult(result)
     }
 }
-
-
-enum Rang {
-    case monkey
-    case child
-    case human
-    case god
-    case unknown
-}
-
-
-

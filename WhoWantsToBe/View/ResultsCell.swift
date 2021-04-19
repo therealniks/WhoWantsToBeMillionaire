@@ -10,6 +10,5 @@ class ResultsCell: UITableViewCell{
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var percentLabel: UILabel!
-    
 }
 
