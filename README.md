@@ -19,7 +19,7 @@
 
 ## Примеры экранов:
 
-<img src="./WhoWantsToBe//screens/main.png" width="400" />      <img src="./WhoWantsToBe//screens/setting.png" width="400" /> 
+<img src="./WhoWantsToBe//screens/main.png" width="400" />      <img src="./WhoWantsToBe//screens/settings.png" width="400" /> 
 
 
 <img src="./WhoWantsToBe/screens/game.png" width="400" />     <img src="./WhoWantsToBe//screens/addQuestion.png" width="400" />
